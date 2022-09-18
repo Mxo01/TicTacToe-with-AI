@@ -20,16 +20,21 @@ def printGameBoard(board):
 
 # --- Take player input ---
 def playerInput(board):
-  inp = int(input("\nPlease, enter a number between 1 and 9: "))
-  if inp >= 1 and inp <= 9 and board[inp-1] == "-":
-    board[inp-1] = player
-  elif inp < 1 or inp > 9:
-    print("\nIt looks like you entered a wrong number...")
-    playerInput(board)
+  inp = input("\nPlease, enter a number between 1 and 9: ")
+  if inp.strip().isdigit():
+    inp = int(inp)
+    if inp >= 1 and inp <= 9 and board[inp-1] == "-":
+      board[inp-1] = player
+    elif inp < 1 or inp > 9:
+      print("\nIt looks like you entered a wrong number...")
+      playerInput(board)
+    else:
+      print("\nOps...player is already in that spot!")
+      playerInput(board)
   else:
-    print("\nOps...player is already in that spot!")
+    print("\nIt looks like you haven't entered a number...")
     playerInput(board)
-
+    
 # --- Check for horizontal winner ---
 def checkHorizontal(board):
   global winner
@@ -388,7 +393,7 @@ def selectDifficulty():
   elif difficult in hard:
     hardGame()
   else: 
-    print("\nPlease, insert the correct difficulty!\n")
+    print("\nPlease, insert the correct difficulty!")
     selectDifficulty()
 
 # --- Start the game ---
