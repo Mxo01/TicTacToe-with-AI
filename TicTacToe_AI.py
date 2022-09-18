@@ -264,7 +264,6 @@ def easyGame():
       newgame = input("\nNew Game? [Y]es/[N]o: ")
       if newgame in newGameAnswers:
         resetBoard(board)
-        selectDifficulty()
       else:
         print("\nSee you soon!")
         break
@@ -272,7 +271,6 @@ def easyGame():
       newgame = input("\nNew Game? [Y]es/[N]o: ")
       if newgame in newGameAnswers:
         resetBoard(board)
-        selectDifficulty()
       else:
         print("\nSee you soon!")
         break
@@ -284,7 +282,6 @@ def easyGame():
       newgame = input("\nNew Game? [Y]es/[N]o: ")
       if newgame in newGameAnswers:
         resetBoard(board)
-        selectDifficulty()
       else:
         print("\nSee you soon!")
         break
@@ -292,7 +289,6 @@ def easyGame():
       newgame = input("\nNew Game? [Y]es/[N]o: ")
       if newgame in newGameAnswers:
         resetBoard(board)
-        selectDifficulty()
       else:
         print("\nSee you soon!")
         break
@@ -307,7 +303,6 @@ def mediumGame():
       newgame = input("\nNew Game? [Y]es/[N]o: ")
       if newgame in newGameAnswers:
         resetBoard(board)
-        selectDifficulty()
       else:
         print("\nSee you soon!")
         break
@@ -315,7 +310,6 @@ def mediumGame():
       newgame = input("\nNew Game? [Y]es/[N]o: ")
       if newgame in newGameAnswers:
         resetBoard(board)
-        selectDifficulty()
       else:
         print("\nSee you soon!")
         break
@@ -327,7 +321,6 @@ def mediumGame():
       newgame = input("\nNew Game? [Y]es/[N]o: ")
       if newgame in newGameAnswers:
         resetBoard(board)
-        selectDifficulty()
       else:
         print("\nSee you soon!")
         break
@@ -335,7 +328,6 @@ def mediumGame():
       newgame = input("\nNew Game? [Y]es/[N]o: ")
       if newgame in newGameAnswers:
         resetBoard(board)
-        selectDifficulty()
       else:
         print("\nSee you soon!")
         break
@@ -350,7 +342,6 @@ def hardGame():
       newgame = input("\nNew Game? [Y]es/[N]o: ")
       if newgame in newGameAnswers:
         resetBoard(board)
-        selectDifficulty()
       else:
         print("\nSee you soon!")
         break
@@ -358,7 +349,6 @@ def hardGame():
       newgame = input("\nNew Game? [Y]es/[N]o: ")
       if newgame in newGameAnswers:
         resetBoard(board)
-        selectDifficulty()
       else:
         print("\nSee you soon!")
         break
@@ -370,7 +360,6 @@ def hardGame():
       newgame = input("\nNew Game? [Y]es/[N]o: ")
       if newgame in newGameAnswers:
         resetBoard(board)
-        selectDifficulty()
       else:
         print("\nSee you soon!")
         break
@@ -378,7 +367,6 @@ def hardGame():
       newgame = input("\nNew Game? [Y]es/[N]o: ")
       if newgame in newGameAnswers:
         resetBoard(board)
-        selectDifficulty()
       else:
         print("\nSee you soon!")
         break
