@@ -3,7 +3,7 @@
 
 
 This is a more complex and sophisticated version of TicTacToe as it uses artificial 
-intelligence divided into 3 difficulties: easy medium and hard. If this is your first 
+intelligence divided into 4 difficulties: easy, medium, hard and impossible. If this is your first 
 "project" in python, first look at [Simple TicTacToe](https://github.com/Mxo01/Simple-TicTacToe)
 to understand the reasoning behind it.
 
