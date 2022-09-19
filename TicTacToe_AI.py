@@ -4,6 +4,7 @@ import random
 easy = ["e", "easy", "E", "Easy"]
 medium = ["m", "medium", "M", "Medium"]
 hard = ["h", "hard", "H", "Hard"]
+impossible = ["i", "impossible", "I", "Impossible"]
 newGameAnswers = ["y", "yes", "Yes", "YES",  "Y"]
 board = ["-", "-", "-", "-", "-", "-", "-", "-", "-"]
 player = "X"
@@ -215,6 +216,79 @@ def checkPlayerHard(board):
   else:
     return random.randint(0, 8)
   
+# --- AI for impossible level ---
+def checkPlayerImpossible(board):
+  if "X" in board[0] and "X" in board[1] and board[2] == "-":
+    return 2
+  if "X" in board[1] and "X" in board[2] and board[0] == "-":
+    return 0
+  if "X" in board[0] and "X" in board[2] and board[1] == "-":
+    return 1
+  if "X" in board[3] and "X" in board[4] and board[5] == "-":
+    return 5
+  if "X" in board[3] and "X" in board[5] and board[4] == "-":
+    return 4
+  if "X" in board[4] and "X" in board[5] and board[3] == "-":
+    return 3
+  if "X" in board[6] and "X" in board[7] and board[8] == "-":
+    return 8
+  if "X" in board[6] and "X" in board[8] and board[7] == "-":
+    return 7
+  if "X" in board[7] and "X" in board[8] and board[6] == "-":
+    return 6
+  if "X" in board[0] and "X" in board[3] and board[6] == "-":
+    return 6
+  if "X" in board[0] and "X" in board[6] and board[3] == "-":
+    return 3
+  if "X" in board[3] and "X" in board[6] and board[0] == "-":
+    return 0
+  if "X" in board[1] and "X" in board[4] and board[7] == "-":
+    return 7
+  if "X" in board[1] and "X" in board[7] and board[4] == "-":
+    return 4
+  if "X" in board[4] and "X" in board[7] and board[1] == "-":
+    return 1
+  if "X" in board[2] and "X" in board[5] and board[8] == "-":
+    return 8
+  if "X" in board[2] and "X" in board[8] and board[5] == "-":
+    return 5
+  if "X" in board[5] and "X" in board[8] and board[2] == "-":
+    return 2
+  if "X" in board[0] and "X" in board[4] and board[8] == "-":
+    return 8
+  if "X" in board[0] and "X" in board[8] and board[4] == "-":
+    return 4
+  if "X" in board[4] and "X" in board[8] and board[0] == "-":
+    return 0
+  if "X" in board[2] and "X" in board[4] and board[6] == "-":
+    return 6
+  if "X" in board[2] and "X" in board[6] and board[4] == "-":
+    return 4
+  if "X" in board[4] and "X" in board[6] and board[2] == "-":
+    return 2
+  if ("X" in board[0] and "X" in board[8] and player in board[4]) or ("X" in board[3] and "X" in board[6] and player in board[4]):
+    return random.choice([1,3,5,7])
+  if board[4] == "-":
+    return 4
+  if board[0] == "-":
+    return 0
+  if board[2] == "-":
+    return 2
+  if board[6] == "-":
+    return 6
+  if board[8] == "-":
+    return 8
+  if player == board[4] and board[0] == "-":
+    return 0
+  if player == board[4] and board[2] == "-":
+    return 2
+  if player == board[4] and board[6] == "-":
+    return 6
+  if player == board[4] and board[8] == "-":
+    return 8
+  else:
+    return random.randint(0, 8)
+
 # --- Switch the player ---
 def switchPlayer():
   global player
@@ -243,6 +317,14 @@ def computerMedium(board):
 def computerHard(board):
   while player == "O" and "-" in board:
     pos = checkPlayerHard(board)   
+    if board[pos] == "-":
+      board[pos] = "O"
+      switchPlayer()
+
+# --- Computer level hard ---
+def computerImpossible(board):
+  while player == "O" and "-" in board:
+    pos = checkPlayerImpossible(board)   
     if board[pos] == "-":
       board[pos] = "O"
       switchPlayer()
@@ -371,15 +453,56 @@ def hardGame():
         print("\nSee you soon!")
         break
 
+# --- Hard Game Running ---
+def impossibleGame():
+  while gameRunning:
+    printGameBoard(board)
+
+    playerInput(board)
+    if checkWinner():
+      newgame = input("\nNew Game? [Y]es/[N]o: ")
+      if newgame in newGameAnswers:
+        resetBoard(board)
+      else:
+        print("\nSee you soon!")
+        break
+    if checkTie(board):
+      newgame = input("\nNew Game? [Y]es/[N]o: ")
+      if newgame in newGameAnswers:
+        resetBoard(board)
+      else:
+        print("\nSee you soon!")
+        break
+
+    switchPlayer()
+    
+    computerImpossible(board)
+    if checkWinner():
+      newgame = input("\nNew Game? [Y]es/[N]o: ")
+      if newgame in newGameAnswers:
+        resetBoard(board)
+      else:
+        print("\nSee you soon!")
+        break
+    if checkTie(board):
+      newgame = input("\nNew Game? [Y]es/[N]o: ")
+      if newgame in newGameAnswers:
+        resetBoard(board)
+      else:
+        print("\nSee you soon!")
+        break
+
 # --- Select the difficult ---
 def selectDifficulty():
-  difficult = input("\nSelect the difficult: [E]asy, [M]edium or [H]ard? ");
+  difficult = input("\nSelect the difficult: [E]asy, [M]edium, [H]ard or [I]mpossible? ");
   if difficult in easy:
     easyGame()
   elif difficult in medium:
     mediumGame()
   elif difficult in hard:
     hardGame()
+  elif difficult in impossible:
+    impossibleGame()
   else: 
     print("\nPlease, insert the correct difficulty!")
     selectDifficulty()
