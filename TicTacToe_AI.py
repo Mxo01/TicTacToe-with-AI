@@ -1,5 +1,6 @@
 # --- Some variables ---
-import random
+import random, os, sys
+from sys import platform
 
 easy = ["e", "easy", "E", "Easy"]
 medium = ["m", "medium", "M", "Medium"]
@@ -10,6 +11,14 @@ board = ["-", "-", "-", "-", "-", "-", "-", "-", "-"]
 player = "X"
 winner = None
 gameRunning = True
+
+# define clear function
+if platform == "linux" or platform == "linux2" or platform == "darwin":
+  clear = lambda: os.system('clear')
+elif platform == "win32":
+  clear = lambda: os.system('cls')
+else:
+  print("Unknown platform", file = sys.stderr)
 
 # --- Print the game board ---
 def printGameBoard(board):
@@ -22,6 +31,7 @@ def printGameBoard(board):
 # --- Take player input ---
 def playerInput(board):
   inp = input("\nPlease, enter a number between 1 and 9: ")
+  clear()
   if inp.strip().isdigit():
     inp = int(inp)
     if inp >= 1 and inp <= 9 and board[inp-1] == "-":
@@ -335,6 +345,7 @@ def resetBoard(board):
   for i in range(len(board)):
     board[i] = "-"
   gameRunning = True
+  clear()
 
 # --- Easy Game Running ---
 def easyGame():
@@ -343,15 +354,15 @@ def easyGame():
 
     playerInput(board)
     if checkWinner():
-      newgame = input("\nNew Game? [Y]es/[N]o: ")
-      if newgame in newGameAnswers:
+      newgame = input("\nNew Game? Press Enter: ")
+      if len(newgame) == 0:
         resetBoard(board)
       else:
         print("\nSee you soon!")
         break
     if checkTie(board):
-      newgame = input("\nNew Game? [Y]es/[N]o: ")
-      if newgame in newGameAnswers:
+      newgame = input("\nNew Game? Press Enter: ")
+      if len(newgame) == 0:
         resetBoard(board)
       else:
         print("\nSee you soon!")
@@ -361,15 +372,15 @@ def easyGame():
     
     computerEasy(board)
     if checkWinner():
-      newgame = input("\nNew Game? [Y]es/[N]o: ")
-      if newgame in newGameAnswers:
+      newgame = input("\nNew Game? Press Enter: ")
+      if len(newgame) == 0:
         resetBoard(board)
       else:
         print("\nSee you soon!")
         break
     if checkTie(board):
-      newgame = input("\nNew Game? [Y]es/[N]o: ")
-      if newgame in newGameAnswers:
+      newgame = input("\nNew Game? Press Enter: ")
+      if len(newgame) == 0:
         resetBoard(board)
       else:
         print("\nSee you soon!")
@@ -382,15 +393,15 @@ def mediumGame():
 
     playerInput(board)
     if checkWinner():
-      newgame = input("\nNew Game? [Y]es/[N]o: ")
-      if newgame in newGameAnswers:
+      newgame = input("\nNew Game? Press Enter: ")
+      if len(newgame) == 0:
         resetBoard(board)
       else:
         print("\nSee you soon!")
         break
     if checkTie(board):
-      newgame = input("\nNew Game? [Y]es/[N]o: ")
-      if newgame in newGameAnswers:
+      newgame = input("\nNew Game? Press Enter: ")
+      if len(newgame) == 0:
         resetBoard(board)
       else:
         print("\nSee you soon!")
@@ -400,15 +411,15 @@ def mediumGame():
     
     computerMedium(board)
     if checkWinner():
-      newgame = input("\nNew Game? [Y]es/[N]o: ")
-      if newgame in newGameAnswers:
+      newgame = input("\nNew Game? Press Enter: ")
+      if len(newgame) == 0:
         resetBoard(board)
       else:
         print("\nSee you soon!")
         break
     if checkTie(board):
-      newgame = input("\nNew Game? [Y]es/[N]o: ")
-      if newgame in newGameAnswers:
+      newgame = input("\nNew Game? Press Enter: ")
+      if len(newgame) == 0:
         resetBoard(board)
       else:
         print("\nSee you soon!")
@@ -421,15 +432,15 @@ def hardGame():
 
     playerInput(board)
     if checkWinner():
-      newgame = input("\nNew Game? [Y]es/[N]o: ")
-      if newgame in newGameAnswers:
+      newgame = input("\nNew Game? Press Enter: ")
+      if len(newgame) == 0:
         resetBoard(board)
       else:
         print("\nSee you soon!")
         break
     if checkTie(board):
-      newgame = input("\nNew Game? [Y]es/[N]o: ")
-      if newgame in newGameAnswers:
+      newgame = input("\nNew Game? Press Enter: ")
+      if len(newgame) == 0:
         resetBoard(board)
       else:
         print("\nSee you soon!")
@@ -439,15 +450,15 @@ def hardGame():
     
     computerHard(board)
     if checkWinner():
-      newgame = input("\nNew Game? [Y]es/[N]o: ")
-      if newgame in newGameAnswers:
+      newgame = input("\nNew Game? Press Enter: ")
+      if len(newgame) == 0:
         resetBoard(board)
       else:
         print("\nSee you soon!")
         break
     if checkTie(board):
-      newgame = input("\nNew Game? [Y]es/[N]o: ")
-      if newgame in newGameAnswers:
+      newgame = input("\nNew Game? Press Enter: ")
+      if len(newgame) == 0:
         resetBoard(board)
       else:
         print("\nSee you soon!")
@@ -460,15 +471,15 @@ def impossibleGame():
 
     playerInput(board)
     if checkWinner():
-      newgame = input("\nNew Game? [Y]es/[N]o: ")
-      if newgame in newGameAnswers:
+      newgame = input("\nNew Game? Press Enter: ")
+      if len(newgame) == 0:
         resetBoard(board)
       else:
         print("\nSee you soon!")
         break
     if checkTie(board):
-      newgame = input("\nNew Game? [Y]es/[N]o: ")
-      if newgame in newGameAnswers:
+      newgame = input("\nNew Game? Press Enter: ")
+      if len(newgame) == 0:
         resetBoard(board)
       else:
         print("\nSee you soon!")
@@ -478,15 +489,15 @@ def impossibleGame():
     
     computerImpossible(board)
     if checkWinner():
-      newgame = input("\nNew Game? [Y]es/[N]o: ")
-      if newgame in newGameAnswers:
+      newgame = input("\nNew Game? Press Enter: ")
+      if len(newgame) == 0:
         resetBoard(board)
       else:
         print("\nSee you soon!")
         break
     if checkTie(board):
-      newgame = input("\nNew Game? [Y]es/[N]o: ")
-      if newgame in newGameAnswers:
+      newgame = input("\nNew Game? Press Enter: ")
+      if len(newgame) == 0:
         resetBoard(board)
       else:
         print("\nSee you soon!")
@@ -494,7 +505,8 @@ def impossibleGame():
 
 # --- Select the difficult ---
 def selectDifficulty():
-  difficult = input("\nSelect the difficult: [E]asy, [M]edium, [H]ard or [I]mpossible? ");
+  difficult = input("\nSelect the difficult: [E]asy, [M]edium, [H]ard or [I]mpossible? ")
+  clear()
   if difficult in easy:
     easyGame()
   elif difficult in medium:
